@@ -1,69 +1,124 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اكتشفي جائزتك</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-  font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#071a3d,#152d5c);
-  color:#fff; padding:20px;
-}
-.card{
-  width:min(92vw,430px); background:#fffaf0; color:#101b38;
-  border-radius:24px; padding:34px 24px; text-align:center;
-  box-shadow:0 18px 50px #0006;
-}
-h1{margin:0 0 12px;font-size:30px;color:#7d1834}
-p{font-size:18px;margin:0 0 24px}
-button{
-  border:0; border-radius:14px; padding:15px 24px; font-size:18px;
-  font-weight:bold; cursor:pointer; width:100%; margin-top:10px;
-}
-#reveal{background:#7d1834;color:white}
-#instagram{background:#101b38;color:white;display:none}
-#prize{
-  display:none; margin:22px 0 8px; padding:22px 15px;
-  border:2px solid #c7a44b; border-radius:18px;
-  background:#fff; font-size:21px; font-weight:bold; line-height:1.6;
-}
-.small{font-size:13px;color:#666;margin-top:18px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اكتشفي جائزتك</title>
+    <style>
+        body {
+            font-family: 'Tajawal', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background: #fffdf9;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #4a0404;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .prize-box {
+            background: #fdf2f2;
+            border: 2px dashed #d1a1a1;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #991b1b;
+            margin-bottom: 25px;
+            min-height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-reveal {
+            background: #fff;
+            border: 2px solid #d1a1a1;
+            color: #991b1b;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        .btn-reveal:hover {
+            background: #991b1b;
+            color: #fff;
+        }
+        .btn-insta {
+            background: #0f172a;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 30px;
+            display: block;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .btn-insta:hover {
+            background: #1e1b4b;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-<div class="card">
-  <h1>🎁 اكتشفي جائزتك</h1>
-  <p>اضغطي الزر لتكتشفي جائزتك العشوائية ✨</p>
 
-  <button id="reveal" onclick="showPrize()">اكتشفي جائزتي</button>
+    <div class="card">
+        <h1>اكتشفي جائزتك 🎁</h1>
+        <p>اضغطي الزر لتكتشفي جائزتك العشوائية ✨</p>
+        
+        <div class="prize-box" id="prizeDisplay">اضغطي بالأسفل للبدء! 👇</div>
+        
+        <button class="btn-reveal" onclick="revealPrize()">اكشفي الجائزة الآن</button>
+        
+        <a href="https://www.instagram.com/hiba_shein_order" class="btn-insta" target="_blank">تسوقي الآن على إنستغرام</a>
+        
+        <div class="footer">♡ hiba_shein_order</div>
+    </div>
 
-  <div id="prize"></div>
+    <script>
+        const prizes = [
+            "🎁 قسيمة شرائية بقيمة 5$!",
+            "🚚 توصيل مجاني لطلبك القادم!",
+            "🎀 خصم 10% على قطعتك الثانية!",
+            "🌟 هدية مفاجأة مع طلبك القادم!",
+            "🎉 قسيمة شرائية بقيمة 10$!"
+        ];
 
-  <button id="instagram" onclick="location.href='https://www.instagram.com/hiba_shein_order/'">
-    تسوّقي الآن على إنستغرام
-  </button>
-
-  <div class="small">hiba_shein_order ♡</div>
-</div>
-
-<script>
-const prizes = [
-  "خصم 5% عند الشراء فوق مبلغ معيّن 🎀",
-  "اشتري بـ200 شيكل أو أكثر واربحِي هدية باكج 🎁",
-  "توصيل مجاني 🚚",
-  "قسيمة شرائية 🛍️"
-];
-
-function showPrize(){
-  const prize = prizes[Math.floor(Math.random() * prizes.length)];
-  document.getElementById("prize").textContent = prize;
-  document.getElementById("prize").style.display = "block";
-  document.getElementById("reveal").style.display = "none";
-  document.getElementById("instagram").style.display = "block";
-}
-</script>
+        function revealPrize() {
+            const randomIndex = Math.floor(Math.random() * prizes.length);
+            const display = document.getElementById('prizeDisplay');
+            display.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                display.innerText = prizes[randomIndex];
+                display.style.transform = "scale(1)";
+            }, 150);
+        }
+    </script>
 </body>
 </html>
